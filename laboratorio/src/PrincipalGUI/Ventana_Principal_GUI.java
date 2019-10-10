@@ -31,6 +31,11 @@ public class Ventana_Principal_GUI extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
@@ -46,6 +51,22 @@ public class Ventana_Principal_GUI extends javax.swing.JFrame {
         jMenu2.setText("CATALOGOS");
 
         jMenu5.setText("Administración de Empleados");
+
+        jMenuItem1.setText("Ingreso de Empleados");
+        jMenu5.add(jMenuItem1);
+
+        jMenuItem2.setText("Actualización de Empleados");
+        jMenu5.add(jMenuItem2);
+
+        jMenuItem3.setText("Eliminar Empleados");
+        jMenu5.add(jMenuItem3);
+
+        jMenuItem5.setText("Consulta General de Empleados");
+        jMenu5.add(jMenuItem5);
+
+        jMenuItem6.setText("Consulta por Parámetro de Empleados");
+        jMenu5.add(jMenuItem6);
+
         jMenu2.add(jMenu5);
 
         jMenu6.setText("Administración de Investigadores");
@@ -130,6 +151,11 @@ public class Ventana_Principal_GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }
