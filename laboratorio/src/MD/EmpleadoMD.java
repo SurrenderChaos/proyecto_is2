@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package f0_Adm_empleados;
+package MD;
 
 /**
  *
