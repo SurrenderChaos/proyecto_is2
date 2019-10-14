@@ -10,7 +10,6 @@ import DP.lugarDP;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -62,6 +61,7 @@ public class lugarMD {
                     lugardp.getLongitud() +"');";
             System.out.println(cadena);
             stmt.executeQuery(cadena);
+            JOptionPane.showMessageDialog(null, "Lugar ingresado con exito");
             System.out.println("lugar ingresado con exito");
             con = coneccion.cerrarConeccion();
         }catch(Exception e){
@@ -80,6 +80,7 @@ public class lugarMD {
             System.out.println(cadena);
             verifica = stmt.executeUpdate(cadena);
             if(verifica >0){
+                JOptionPane.showMessageDialog(null, "Lugar modificado con exito");
                 System.out.println("lugar modificado con exito");
             }
             con = coneccion.cerrarConeccion();
@@ -97,6 +98,7 @@ public class lugarMD {
             System.out.println(cadena);
             verifica = stmt.executeUpdate(cadena);
             if(verifica > 0){
+                JOptionPane.showMessageDialog(null, "Lugar eliminado con exito");
                 System.out.println("lugar eliminado con exito");
             }
             con = coneccion.cerrarConeccion();
@@ -109,10 +111,10 @@ public class lugarMD {
         try{
             con = coneccion.conectar();
             stmt = con.createStatement();
-            result = stmt.executeQuery("SELECT * FROM LUGARES WHERE CODIGO = '" + lugardp.getCodigo()+"';");
+            result = stmt.executeQuery("SELECT * FROM LUGARES WHERE NOMBRE = '" + lugardp.getNombre()+"';");
             while(result.next()){
                 if(result.getString(1).trim().compareTo(lugardp.getCodigo()) == 0){
-                    lugardp.setNombre(result.getString(2));
+                    lugardp.setCodigo(result.getString(1));
                     lugardp.setLatitud(result.getDouble(3));
                     lugardp.setLongitud(result.getDouble(4));
                 }

@@ -7,6 +7,7 @@
 package DP;
 
 import MD.lugarMD;
+import java.util.ArrayList;
 
 /**
  *
@@ -61,5 +62,35 @@ public class lugarDP {
         this.longitud = longitud;
     }
     
+    public boolean verificarDP(){
+        lugarMD lugarmd = new lugarMD(this);
+        return lugarmd.verificar();
+    }
     
+    public void crearDP(){
+        lugarMD lugarmd = new lugarMD(this);
+        lugarmd.crear();
+    }
+    
+    public void modificarDP(){
+        lugarMD lugarmd = new lugarMD(this);
+        lugarmd.modificar();
+    }
+    
+    public void eliminarDP(){
+        lugarMD lugarmd = new lugarMD(this);
+        lugarmd.eliminar();
+    }
+    
+    public lugarDP parametroDP(){
+        lugarMD lugarmd = new lugarMD(this);
+        return lugarmd.consultaP();
+    }
+    
+    public ArrayList generalDP(){
+        ArrayList<lugarDP> lugares = new ArrayList<lugarDP>();
+        lugarMD lugarmd = new lugarMD(this);
+        lugares = lugarmd.consultaG();
+        return lugares;
+    }
 }

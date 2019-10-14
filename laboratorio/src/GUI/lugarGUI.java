@@ -6,12 +6,20 @@
 
 package GUI;
 
+import DP.lugarDP;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author benav
  */
 public class lugarGUI extends javax.swing.JFrame {
 
+    lugarDP lugar = new lugarDP();
+    DefaultTableModel modelo1 = new DefaultTableModel();
+    DefaultTableModel modelo2 = new DefaultTableModel();
     /**
      * Creates new form lugarGUI
      */
@@ -19,6 +27,21 @@ public class lugarGUI extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void formatoTablas(){ 
+        
+        tablaConsultaGeneral.setModel(modelo1);
+        modelo1.addColumn("Codigo");
+        modelo1.addColumn("Nombre");
+        modelo1.addColumn("Longitud");
+        modelo1.addColumn("Latitud");
+        
+        tablaConsultaParametro.setModel(modelo2);
+        modelo2.addColumn("Codigo");
+        modelo2.addColumn("Nombre");
+        modelo2.addColumn("Longitud");
+        modelo2.addColumn("Latitud");
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,47 +57,45 @@ public class lugarGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtCrearCodigo = new javax.swing.JTextField();
+        txtCrearNombre = new javax.swing.JTextField();
+        txtCrearLongitud = new javax.swing.JTextField();
+        txtCrearLatitud = new javax.swing.JTextField();
+        btnCrearGuardar = new javax.swing.JButton();
+        txtCrearCancelar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        txtModificarCodigo = new javax.swing.JTextField();
+        txtModificarNombre = new javax.swing.JTextField();
+        txtModificarLongitud = new javax.swing.JTextField();
+        txtModificarLatitud = new javax.swing.JTextField();
+        btnModificarBuscar = new javax.swing.JButton();
+        btnModificarGuardar = new javax.swing.JButton();
+        btnModificarCancelar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        txtEliminarCodigo = new javax.swing.JTextField();
+        txtEliminarNombre = new javax.swing.JTextField();
+        txtEliminarLongitud = new javax.swing.JTextField();
+        txtEliminarLatitud = new javax.swing.JTextField();
+        btnEliminarEliminar = new javax.swing.JButton();
+        btnEliminarCancelar = new javax.swing.JButton();
+        btnEliminarBuscar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        txtParametroNombre = new javax.swing.JTextField();
+        btnParametroBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaConsultaParametro = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaConsultaGeneral = new javax.swing.JTable();
         jButton12 = new javax.swing.JButton();
 
         jTabbedPane1.setToolTipText("");
@@ -87,21 +108,31 @@ public class lugarGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Latitud");
 
-        jButton1.setText("Guardar");
+        btnCrearGuardar.setText("Guardar");
+        btnCrearGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cancelar");
+        txtCrearCancelar.setText("Cancelar");
+        txtCrearCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCrearCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(162, 162, 162)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnCrearGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(txtCrearCancelar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel1)
@@ -110,36 +141,36 @@ public class lugarGUI extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(263, Short.MAX_VALUE))
+                            .addComponent(txtCrearCodigo)
+                            .addComponent(txtCrearNombre)
+                            .addComponent(txtCrearLongitud)
+                            .addComponent(txtCrearLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(72, 72, 72)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCrearCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCrearNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCrearLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCrearLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(218, Short.MAX_VALUE))
+                    .addComponent(btnCrearGuardar)
+                    .addComponent(txtCrearCancelar))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear", jPanel1);
@@ -152,23 +183,38 @@ public class lugarGUI extends javax.swing.JFrame {
 
         jLabel8.setText("Latitud");
 
-        jButton3.setText("Buscar");
+        btnModificarBuscar.setText("Buscar");
+        btnModificarBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarBuscarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Guardar");
+        btnModificarGuardar.setText("Modificar");
+        btnModificarGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Cancelar");
+        btnModificarCancelar.setText("Cancelar");
+        btnModificarCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
+                .addContainerGap(141, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(btnModificarGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5))
+                        .addComponent(btnModificarCancelar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
@@ -177,39 +223,39 @@ public class lugarGUI extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtModificarCodigo)
+                            .addComponent(txtModificarNombre)
+                            .addComponent(txtModificarLongitud)
+                            .addComponent(txtModificarLatitud))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addGap(65, 65, 65))
+                .addComponent(btnModificarBuscar)
+                .addGap(134, 134, 134))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(94, 94, 94)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtModificarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(txtModificarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtModificarLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtModificarLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(227, Short.MAX_VALUE))
+                    .addComponent(btnModificarGuardar)
+                    .addComponent(btnModificarCancelar))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel2);
@@ -222,24 +268,39 @@ public class lugarGUI extends javax.swing.JFrame {
 
         jLabel12.setText("Latitud");
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        txtEliminarLongitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                txtEliminarLongitudActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Eliminar");
+        btnEliminarEliminar.setText("Eliminar");
+        btnEliminarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEliminarActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Cancelar");
+        btnEliminarCancelar.setText("Cancelar");
+        btnEliminarCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCancelarActionPerformed(evt);
+            }
+        });
 
-        jButton8.setText("Buscar");
+        btnEliminarBuscar.setText("Buscar");
+        btnEliminarBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,56 +310,57 @@ public class lugarGUI extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                            .addComponent(jTextField10)
-                            .addComponent(jTextField11)
-                            .addComponent(jTextField9))
+                            .addComponent(txtEliminarLatitud)
+                            .addComponent(txtEliminarNombre)
+                            .addComponent(txtEliminarLongitud)
+                            .addComponent(txtEliminarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton8))
+                        .addComponent(btnEliminarBuscar))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton6)
+                        .addComponent(btnEliminarEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7)))
-                .addContainerGap())
+                        .addComponent(btnEliminarCancelar)))
+                .addGap(136, 136, 136))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(91, 91, 91)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8))
+                    .addComponent(txtEliminarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEliminarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEliminarLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEliminarLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
-                .addContainerGap(246, Short.MAX_VALUE))
+                    .addComponent(btnEliminarEliminar)
+                    .addComponent(btnEliminarCancelar))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar", jPanel3);
 
         jLabel14.setText("Nombre");
 
-        jButton9.setText("Aceptar");
+        btnParametroBuscar.setText("Buscar");
+        btnParametroBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnParametroBuscarActionPerformed(evt);
+            }
+        });
 
-        jButton10.setText("Cancelar");
-
-        jButton11.setText("Buscar");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaConsultaParametro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -309,52 +371,40 @@ public class lugarGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablaConsultaParametro);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel14)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton11))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButton9)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton10)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(46, 46, 46)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(txtParametroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnParametroBuscar)
+                .addContainerGap(245, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11)
+                    .addComponent(txtParametroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnParametroBuscar)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Consulta", jPanel4);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaConsultaGeneral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -365,31 +415,35 @@ public class lugarGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaConsultaGeneral);
 
-        jButton12.setText("Aceptar");
+        jButton12.setText("Buscar");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jButton12)))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jButton12)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addComponent(jButton12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -415,9 +469,120 @@ public class lugarGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void txtEliminarLongitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarLongitudActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_txtEliminarLongitudActionPerformed
+
+    private void btnCrearGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearGuardarActionPerformed
+        // TODO add your handling code here:
+        lugar.setCodigo(txtCrearCodigo.getText());
+        lugar.setNombre(txtCrearNombre.getText());
+        lugar.setLongitud(Double.parseDouble(txtCrearLongitud.getText()));
+        lugar.setLatitud(Double.parseDouble(txtCrearLatitud.getText()));
+        lugar.crearDP();
+        lugar = new lugarDP();
+        txtCrearCodigo.setText(null);
+        txtCrearNombre.setText(null);
+        txtCrearLongitud.setText(null);
+        txtCrearLatitud.setText(null);        
+    }//GEN-LAST:event_btnCrearGuardarActionPerformed
+
+    private void txtCrearCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCrearCancelarActionPerformed
+        // TODO add your handling code here:
+        lugar = new lugarDP();
+        txtCrearCodigo.setText(null);
+        txtCrearNombre.setText(null);
+        txtCrearLongitud.setText(null);
+        txtCrearLatitud.setText(null);
+    }//GEN-LAST:event_txtCrearCancelarActionPerformed
+
+    private void btnModificarGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarGuardarActionPerformed
+        // TODO add your handling code here:
+        lugar.modificarDP();
+        txtModificarCodigo.setText(null);
+        txtModificarNombre.setText(null);
+        txtModificarLongitud.setText(null);
+        txtModificarLatitud.setText(null);
+        lugar = new lugarDP();
+    }//GEN-LAST:event_btnModificarGuardarActionPerformed
+
+    private void btnModificarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarBuscarActionPerformed
+        // TODO add your handling code here:
+        lugar.setNombre(txtModificarNombre.getText());
+        lugar = lugar.parametroDP();
+        txtModificarCodigo.setText(lugar.getCodigo());
+        txtModificarLongitud.setText(""+lugar.getLongitud());
+        txtModificarLatitud.setText(""+lugar.getLatitud());
+    }//GEN-LAST:event_btnModificarBuscarActionPerformed
+
+    private void btnModificarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCancelarActionPerformed
+        // TODO add your handling code here:
+        txtModificarCodigo.setText(null);
+        txtModificarNombre.setText(null);
+        txtModificarLongitud.setText(null);
+        txtModificarLatitud.setText(null);
+        lugar = new lugarDP();
+    }//GEN-LAST:event_btnModificarCancelarActionPerformed
+
+    private void btnEliminarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarBuscarActionPerformed
+        // TODO add your handling code here:
+        lugar.setNombre(txtEliminarNombre.getText());
+        lugar = lugar.parametroDP();
+        txtEliminarCodigo.setText(lugar.getNombre());
+        txtEliminarLongitud.setText(""+lugar.getLongitud());
+        txtEliminarLatitud.setText(""+lugar.getLatitud());
+    }//GEN-LAST:event_btnEliminarBuscarActionPerformed
+
+    private void btnEliminarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEliminarActionPerformed
+        // TODO add your handling code here:
+        lugar.eliminarDP();
+        txtEliminarCodigo.setText(null);
+        txtEliminarNombre.setText(null);
+        txtEliminarLongitud.setText(null);
+        txtEliminarLatitud.setText(null);
+        lugar = new lugarDP();
+    }//GEN-LAST:event_btnEliminarEliminarActionPerformed
+
+    private void btnEliminarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCancelarActionPerformed
+        // TODO add your handling code here:
+        txtEliminarCodigo.setText(null);
+        txtEliminarNombre.setText(null);
+        txtEliminarLongitud.setText(null);
+        txtEliminarLatitud.setText(null);
+        lugar = new lugarDP();
+    }//GEN-LAST:event_btnEliminarCancelarActionPerformed
+
+    private void btnParametroBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParametroBuscarActionPerformed
+        // TODO add your handling code here:
+        lugar.setNombre(txtParametroNombre.getText());
+        if(lugar.verificarDP() == true){
+            txtParametroNombre.setText(null);
+            Object o[] = null;
+            modelo2.addRow(o);
+            modelo2.setValueAt(lugar.getCodigo(), 0, 0);
+            modelo2.setValueAt(lugar.getNombre(), 0, 1);
+            modelo2.setValueAt(lugar.getLongitud(), 0, 2);
+            modelo2.setValueAt(lugar.getLatitud(), 0, 3);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "No existe ningun registro");
+        }
+    }//GEN-LAST:event_btnParametroBuscarActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        ArrayList<lugarDP> lugares = new ArrayList<lugarDP>();
+        Object o[] = null;
+        lugares = lugar.generalDP();
+        for(int i=0; i < lugares.size(); i++){
+            modelo1.addRow(o);
+            lugarDP aux = lugares.get(i);
+            modelo1.setValueAt(aux.getCodigo(), i, 0);
+            modelo1.setValueAt(aux.getNombre(), i, 1);
+            modelo1.setValueAt(aux.getLongitud(), i, 2);
+            modelo1.setValueAt(aux.getLatitud(), i, 3);
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,18 +620,15 @@ public class lugarGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
+    private javax.swing.JButton btnCrearGuardar;
+    private javax.swing.JButton btnEliminarBuscar;
+    private javax.swing.JButton btnEliminarCancelar;
+    private javax.swing.JButton btnEliminarEliminar;
+    private javax.swing.JButton btnModificarBuscar;
+    private javax.swing.JButton btnModificarCancelar;
+    private javax.swing.JButton btnModificarGuardar;
+    private javax.swing.JButton btnParametroBuscar;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -488,20 +650,21 @@ public class lugarGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tablaConsultaGeneral;
+    private javax.swing.JTable tablaConsultaParametro;
+    private javax.swing.JButton txtCrearCancelar;
+    private javax.swing.JTextField txtCrearCodigo;
+    private javax.swing.JTextField txtCrearLatitud;
+    private javax.swing.JTextField txtCrearLongitud;
+    private javax.swing.JTextField txtCrearNombre;
+    private javax.swing.JTextField txtEliminarCodigo;
+    private javax.swing.JTextField txtEliminarLatitud;
+    private javax.swing.JTextField txtEliminarLongitud;
+    private javax.swing.JTextField txtEliminarNombre;
+    private javax.swing.JTextField txtModificarCodigo;
+    private javax.swing.JTextField txtModificarLatitud;
+    private javax.swing.JTextField txtModificarLongitud;
+    private javax.swing.JTextField txtModificarNombre;
+    private javax.swing.JTextField txtParametroNombre;
     // End of variables declaration//GEN-END:variables
 }
