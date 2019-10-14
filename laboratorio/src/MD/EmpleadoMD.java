@@ -5,6 +5,7 @@
  */
 package MD;
 import DP.EmpleadoDP;
+import java.sql.Connection;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.DriverManager;
@@ -27,25 +28,26 @@ public class EmpleadoMD {
         this.empleado_dp = empleado_dp;
     }
     
-     public void conectarDB(){
+     public static void conectarDB(){
         InputStream input;
         
         try {
-            input = new FileInputStream("configuracion.properties");
+            input = new FileInputStream("D:/Documentos/sexto/is_2/proyecto/codigo_fuente/laboratorio/src/MD/configuracion.properties");
             Properties prop = new Properties();
             prop.load(input);
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
             String password = prop.getProperty("password");
             Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-            con = DriverManager.getConnection(url, user, password);
+            Connection con = DriverManager.getConnection(url, user, password);
+            Statement stmt=con.createStatement();  
             System.out.println("Conexion exitosa!"); 
         }catch (Exception e){
             System.out.println(e.toString());
         }
     }
 	
-    public void desconectarDB(){
+    public  void desconectarDB(){
         try
         {
             con.close();
@@ -129,7 +131,7 @@ public class EmpleadoMD {
         try{
             conectarDB();
             Statement stt = con.createStatement();
-            stt.execute("USE LABORATORIO");
+            stt.execute("USE SYSTEM");
             ResultSet res = stt.executeQuery("SELECT * FROM empleado");
             while (res.next()){
                 if(this.empleado_dp.getCodigoEmpleado().equals(res.getString(1)))

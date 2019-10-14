@@ -95,8 +95,8 @@ public class EmpleadoDP {
         empleado_md.eliminar();
     }
     
-    public void listarEmpleados(){
-        empleado_md.listar();
+    public Vector listarEmpleados(){
+        return empleado_md.listar();
     }
     
     public EmpleadoDP buscarEmpleado(){
