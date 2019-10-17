@@ -25,15 +25,19 @@ public class lugarGUI extends javax.swing.JFrame {
      */
     public lugarGUI() {
         initComponents();
+        formatoTablaGeneral();
+        formatoTablaParametro();
     }
 
-    public void formatoTablas(){ 
+    public void formatoTablaGeneral(){ 
         
         tablaConsultaGeneral.setModel(modelo1);
         modelo1.addColumn("Codigo");
         modelo1.addColumn("Nombre");
         modelo1.addColumn("Longitud");
         modelo1.addColumn("Latitud");
+    }
+    public void formatoTablaParametro(){
         
         tablaConsultaParametro.setModel(modelo2);
         modelo2.addColumn("Codigo");
@@ -41,6 +45,26 @@ public class lugarGUI extends javax.swing.JFrame {
         modelo2.addColumn("Longitud");
         modelo2.addColumn("Latitud");
        
+    }
+    public void borrarRegistrosGeneral(){        
+        DefaultTableModel dm = (DefaultTableModel) tablaConsultaGeneral.getModel();
+        int count = dm.getRowCount();
+        System.out.println("tabla con " + count + " filas");
+        if(count > 0){
+            for(int i= count -1; i>=0; i--){
+                dm.removeRow(i);
+            }
+        }
+    }
+    public void borrarRegistrosParametro(){        
+        DefaultTableModel dm = (DefaultTableModel) tablaConsultaParametro.getModel();
+        int count = dm.getRowCount();
+        System.out.println("tabla con " + count + " filas");
+        if(count > 0){
+            for(int i= count -1; i>=0; i--){
+                dm.removeRow(i);
+            }
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,7 +113,7 @@ public class lugarGUI extends javax.swing.JFrame {
         btnEliminarBuscar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        txtParametroNombre = new javax.swing.JTextField();
+        txtParametroCodigo = new javax.swing.JTextField();
         btnParametroBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaConsultaParametro = new javax.swing.JTable();
@@ -234,15 +258,15 @@ public class lugarGUI extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(93, 93, 93)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtModificarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtModificarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtModificarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarBuscar))
+                    .addComponent(txtModificarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -255,7 +279,7 @@ public class lugarGUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificarGuardar)
                     .addComponent(btnModificarCancelar))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel2);
@@ -268,11 +292,16 @@ public class lugarGUI extends javax.swing.JFrame {
 
         jLabel12.setText("Latitud");
 
+        txtEliminarNombre.setEditable(false);
+
+        txtEliminarLongitud.setEditable(false);
         txtEliminarLongitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEliminarLongitudActionPerformed(evt);
             }
         });
+
+        txtEliminarLatitud.setEditable(false);
 
         btnEliminarEliminar.setText("Eliminar");
         btnEliminarEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -325,15 +354,15 @@ public class lugarGUI extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(90, 90, 90)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtEliminarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEliminarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtEliminarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarBuscar))
+                    .addComponent(txtEliminarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -346,12 +375,12 @@ public class lugarGUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminarEliminar)
                     .addComponent(btnEliminarCancelar))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar", jPanel3);
 
-        jLabel14.setText("Nombre");
+        jLabel14.setText("Codigo");
 
         btnParametroBuscar.setText("Buscar");
         btnParametroBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -381,10 +410,10 @@ public class lugarGUI extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
-                .addComponent(txtParametroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtParametroCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnParametroBuscar)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2))
@@ -394,7 +423,7 @@ public class lugarGUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtParametroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtParametroCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnParametroBuscar)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -475,10 +504,10 @@ public class lugarGUI extends javax.swing.JFrame {
 
     private void btnCrearGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearGuardarActionPerformed
         // TODO add your handling code here:
-        lugar.setCodigo(txtCrearCodigo.getText());
-        lugar.setNombre(txtCrearNombre.getText());
-        lugar.setLongitud(Double.parseDouble(txtCrearLongitud.getText()));
-        lugar.setLatitud(Double.parseDouble(txtCrearLatitud.getText()));
+        lugar.setCodigo(txtCrearCodigo.getText().trim());
+        lugar.setNombre(txtCrearNombre.getText().trim().toUpperCase());
+        lugar.setLongitud(Integer.parseInt(txtCrearLongitud.getText().trim()));
+        lugar.setLatitud(Integer.parseInt(txtCrearLatitud.getText()));
         lugar.crearDP();
         lugar = new lugarDP();
         txtCrearCodigo.setText(null);
@@ -498,21 +527,26 @@ public class lugarGUI extends javax.swing.JFrame {
 
     private void btnModificarGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarGuardarActionPerformed
         // TODO add your handling code here:
+        lugar.setNombre(txtModificarNombre.getText().trim().toUpperCase());
+        lugar.setLatitud(Integer.parseInt(txtModificarLatitud.getText()));
+        lugar.setLongitud(Integer.parseInt(txtModificarLongitud.getText()));
         lugar.modificarDP();
         txtModificarCodigo.setText(null);
         txtModificarNombre.setText(null);
         txtModificarLongitud.setText(null);
         txtModificarLatitud.setText(null);
+        txtModificarCodigo.setEditable(true);
         lugar = new lugarDP();
     }//GEN-LAST:event_btnModificarGuardarActionPerformed
 
     private void btnModificarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarBuscarActionPerformed
         // TODO add your handling code here:
-        lugar.setNombre(txtModificarNombre.getText());
+        lugar.setCodigo(txtModificarCodigo.getText().trim());
         lugar = lugar.parametroDP();
-        txtModificarCodigo.setText(lugar.getCodigo());
+        txtModificarNombre.setText(lugar.getNombre().trim());
         txtModificarLongitud.setText(""+lugar.getLongitud());
         txtModificarLatitud.setText(""+lugar.getLatitud());
+        txtModificarCodigo.setEditable(false);
     }//GEN-LAST:event_btnModificarBuscarActionPerformed
 
     private void btnModificarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCancelarActionPerformed
@@ -526,11 +560,12 @@ public class lugarGUI extends javax.swing.JFrame {
 
     private void btnEliminarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarBuscarActionPerformed
         // TODO add your handling code here:
-        lugar.setNombre(txtEliminarNombre.getText());
+        lugar.setCodigo(txtEliminarCodigo.getText());
         lugar = lugar.parametroDP();
-        txtEliminarCodigo.setText(lugar.getNombre());
+        txtEliminarNombre.setText(lugar.getNombre());
         txtEliminarLongitud.setText(""+lugar.getLongitud());
         txtEliminarLatitud.setText(""+lugar.getLatitud());
+        txtEliminarCodigo.setEditable(false);
     }//GEN-LAST:event_btnEliminarBuscarActionPerformed
 
     private void btnEliminarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEliminarActionPerformed
@@ -540,6 +575,7 @@ public class lugarGUI extends javax.swing.JFrame {
         txtEliminarNombre.setText(null);
         txtEliminarLongitud.setText(null);
         txtEliminarLatitud.setText(null);
+        txtEliminarCodigo.setEditable(true);
         lugar = new lugarDP();
     }//GEN-LAST:event_btnEliminarEliminarActionPerformed
 
@@ -554,9 +590,12 @@ public class lugarGUI extends javax.swing.JFrame {
 
     private void btnParametroBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParametroBuscarActionPerformed
         // TODO add your handling code here:
-        lugar.setNombre(txtParametroNombre.getText());
+        borrarRegistrosParametro();
+        lugar.setCodigo(txtParametroCodigo.getText().trim());
         if(lugar.verificarDP() == true){
-            txtParametroNombre.setText(null);
+            txtParametroCodigo.setText(null);
+            lugar = lugar.parametroDP();
+            System.out.println(lugar.toString());
             Object o[] = null;
             modelo2.addRow(o);
             modelo2.setValueAt(lugar.getCodigo(), 0, 0);
@@ -570,7 +609,8 @@ public class lugarGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnParametroBuscarActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:      
+        borrarRegistrosGeneral();
         ArrayList<lugarDP> lugares = new ArrayList<lugarDP>();
         Object o[] = null;
         lugares = lugar.generalDP();
@@ -582,6 +622,7 @@ public class lugarGUI extends javax.swing.JFrame {
             modelo1.setValueAt(aux.getLongitud(), i, 2);
             modelo1.setValueAt(aux.getLatitud(), i, 3);
         }
+        
     }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
@@ -665,6 +706,6 @@ public class lugarGUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtModificarLatitud;
     private javax.swing.JTextField txtModificarLongitud;
     private javax.swing.JTextField txtModificarNombre;
-    private javax.swing.JTextField txtParametroNombre;
+    private javax.swing.JTextField txtParametroCodigo;
     // End of variables declaration//GEN-END:variables
 }

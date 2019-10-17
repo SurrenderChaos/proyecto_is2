@@ -33,7 +33,7 @@ public class lugarMD {
         try{
             con = coneccion.conectar();
             stmt = con.createStatement();
-            result = stmt.executeQuery("select * from LUGARES");
+            result = stmt.executeQuery("SELECT * FROM LUGARES");
             while(result.next()){
                 if(result.getString(1).trim().compareTo(lugardp.getCodigo()) == 0){
                     System.out.println("lugar encontrado");
@@ -50,15 +50,14 @@ public class lugarMD {
     }
     
     public void crear(){
-        String aux = "";
         try{
             con = coneccion.conectar();
             stmt = con.createStatement();
-            cadena = "INSERT INTO LUGARES( CODIGO, NOMBRE, LATITUD, LONGITUD) VALUES('"+
+            cadena = "INSERT INTO LUGARES( LUGCODIGO, LUGNOMBRE, LUGLATITUD, LUGLONGITUD) VALUES('"+
                     lugardp.getCodigo() + "', '"+
                     lugardp.getNombre() + "', '"+
                     lugardp.getLatitud() + "', '"+
-                    lugardp.getLongitud() +"');";
+                    lugardp.getLongitud() +"')";
             System.out.println(cadena);
             stmt.executeQuery(cadena);
             JOptionPane.showMessageDialog(null, "Lugar ingresado con exito");
@@ -74,9 +73,9 @@ public class lugarMD {
         try{
             con = coneccion.conectar();
             stmt = con.createStatement();
-            cadena = "UPDATE LUGARES SET NOMBRE = '"+ lugardp.getNombre()+"', "+
-                    "LATITUD = '"+lugardp.getLatitud() +"', "+
-                    "LONGITUD = '"+lugardp.getLongitud()+"' WHERE CODIGO = '"+lugardp.getCodigo()+"' ;";
+            cadena = "UPDATE LUGARES SET LUGNOMBRE = '"+ lugardp.getNombre()+"', "+
+                    "LUGLATITUD = '"+lugardp.getLatitud() +"', "+
+                    "LUGLONGITUD = '"+lugardp.getLongitud()+"' WHERE LUGCODIGO = '"+lugardp.getCodigo()+"'";
             System.out.println(cadena);
             verifica = stmt.executeUpdate(cadena);
             if(verifica >0){
@@ -94,7 +93,7 @@ public class lugarMD {
         try{
             con = coneccion.conectar();
             stmt = con.createStatement();
-            cadena = "DELETE FROM LUGARES WHERE ID = "+lugardp.getCodigo();
+            cadena = "DELETE FROM LUGARES WHERE LUGCODIGO = '"+lugardp.getCodigo()+"'";
             System.out.println(cadena);
             verifica = stmt.executeUpdate(cadena);
             if(verifica > 0){
@@ -111,14 +110,17 @@ public class lugarMD {
         try{
             con = coneccion.conectar();
             stmt = con.createStatement();
-            result = stmt.executeQuery("SELECT * FROM LUGARES WHERE NOMBRE = '" + lugardp.getNombre()+"';");
+            cadena = "SELECT * FROM LUGARES WHERE LUGCODIGO = '" + lugardp.getCodigo().trim()+"'";
+            System.out.println(cadena);
+            result = stmt.executeQuery(cadena);            
             while(result.next()){
                 if(result.getString(1).trim().compareTo(lugardp.getCodigo()) == 0){
-                    lugardp.setCodigo(result.getString(1));
-                    lugardp.setLatitud(result.getDouble(3));
-                    lugardp.setLongitud(result.getDouble(4));
+                    lugardp.setNombre(result.getString(2).trim());
+                    lugardp.setLatitud(result.getInt(3));
+                    lugardp.setLongitud(result.getInt(4));
                 }
             }
+            con = coneccion.cerrarConeccion();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -131,18 +133,19 @@ public class lugarMD {
         try{
             con = coneccion.conectar();
             stmt = con.createStatement();
-            result = stmt.executeQuery("SELECT * FROM LUGARES");
+            result = stmt.executeQuery("SELECT * FROM LUGARES ORDER BY LUGCODIGO ASC");
             while(result.next()){
                 aux = new lugarDP();
-                aux.setCodigo(result.getString(1));
-                aux.setNombre(result.getString(2));
-                aux.setLatitud(result.getDouble(3));
-                aux.setLongitud(result.getDouble(4));
+                aux.setCodigo(result.getString(1).trim());
+                aux.setNombre(result.getString(2).trim());
+                aux.setLatitud(result.getInt(3));
+                aux.setLongitud(result.getInt(4));
                 lugares.add(aux);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
+        con = coneccion.cerrarConeccion();
         return lugares;
     }
 }

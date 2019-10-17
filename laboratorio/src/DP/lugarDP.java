@@ -16,14 +16,14 @@ import java.util.ArrayList;
 public class lugarDP {
     private String codigo;
     private String nombre;
-    private double latitud;
-    private double longitud;
+    private int latitud;
+    private int longitud;
     private lugarMD lugarmd;
 
     public lugarDP() {
     }
 
-    public lugarDP(String codigo, String nombre, double latitud, double longitud) {
+    public lugarDP(String codigo, String nombre, int latitud, int longitud) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.latitud = latitud;
@@ -46,19 +46,19 @@ public class lugarDP {
         this.nombre = nombre;
     }
 
-    public double getLatitud() {
+    public int getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(double latitud) {
+    public void setLatitud(int latitud) {
         this.latitud = latitud;
     }
 
-    public double getLongitud() {
+    public int getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(double longitud) {
+    public void setLongitud(int longitud) {
         this.longitud = longitud;
     }
     
@@ -93,4 +93,11 @@ public class lugarDP {
         lugares = lugarmd.consultaG();
         return lugares;
     }
+
+    @Override
+    public String toString() {
+        return "lugarDP{" + "codigo=" + codigo + ", nombre=" + nombre + ", latitud=" + latitud + ", longitud=" + longitud + ", lugarmd=" + lugarmd + '}';
+    }
+    
+    
 }
