@@ -38,14 +38,31 @@ public class EmpleadoMD {
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
             String password = prop.getProperty("password");
-            Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-            Connection con = DriverManager.getConnection(url, user, password);
-            Statement stmt=con.createStatement();  
+            Class.forName("oracle.jdbc.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SYSTEM", "lab");             
             System.out.println("Conexion exitosa!"); 
         }catch (Exception e){
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
     }
+     
+    public static void conexion2(){
+        try{  
+        //step1 load the driver class  
+        Class.forName("oracle.jdbc.driver.OracleDriver");  
+
+        //step2 create  the connection object  
+        Connection con=DriverManager.getConnection(  
+        "jdbc:oracle:thin:@localhost:1521:xe","system","lab");  
+
+         System.out.println("Conexion exitosa!"); 
+
+        }catch(Exception e){ System.out.println(e);}  
+
+    }  
+      
+     
+    
 	
     public  void desconectarDB(){
         try
@@ -127,13 +144,19 @@ public class EmpleadoMD {
  
     }
     
+    @SuppressWarnings("ConvertToTryWithResources")
     public boolean verificarCodigo(){
         try{
             conectarDB();
+            //conexion2();
+            System.out.println("conectado");
             Statement stt = con.createStatement();
-            stt.execute("USE SYSTEM");
-            ResultSet res = stt.executeQuery("SELECT * FROM empleado");
+            System.out.println("creado statement");
+            //stt.execute("USE SYSTEM");
+            ResultSet res = stt.executeQuery("SELECT * FROM EMPLEADO");
             while (res.next()){
+                System.out.println(empleado_dp.toString());
+                System.out.println("res = "+res.getString(1));
                 if(this.empleado_dp.getCodigoEmpleado().equals(res.getString(1)))
                     return true;
 	        	 
@@ -143,7 +166,7 @@ public class EmpleadoMD {
             
              
         }catch (Exception ex) {
-            
+            ex.printStackTrace();
         }
         return false;
 

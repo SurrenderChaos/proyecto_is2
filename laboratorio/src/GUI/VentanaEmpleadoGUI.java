@@ -129,6 +129,11 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
                 tf_ingCodEmpFocusLost(evt);
             }
         });
+        tf_ingCodEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_ingCodEmpActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("CEDULA DE EMPLEADO:");
 
@@ -320,8 +325,12 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
             tf_ingCargoEmp.setText(empleadoBuscado.getCargoEmpleado());
         }
 
-        System.out.println(verificacion);
+        System.out.println("GUI verificar"+verificacion);
     }//GEN-LAST:event_tf_ingCodEmpFocusLost
+
+    private void tf_ingCodEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ingCodEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_ingCodEmpActionPerformed
      private void limpiar(){
         this.tf_ingCedEmp.setText("");
         this.tf_ingDirEmp.setText("");
