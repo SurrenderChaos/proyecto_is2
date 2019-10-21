@@ -167,12 +167,14 @@ public class EmpleadoMD {
     }
     
     public Vector  listar(){
-        conectarDB();
+        
 	Vector listaEmpleados = new Vector();
+        
 		
 	try{
+                conectarDB();
 		Statement stt = con.createStatement();
-	        stt.execute("USE LABORATORIO");
+	        
 	         
 	        this.rs = stt.executeQuery("SELECT * FROM empleado");
 	        while (this.rs.next()){
@@ -227,12 +229,12 @@ public class EmpleadoMD {
         return empleadoAux;
     }
     
-    public EmpleadoDP buscarParametro(){
+    public EmpleadoDP buscarParametro(String parametro, String valor){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String completeDateInsert = "";
         try {
             String fechaNac = formatter.format(empleado_dp.getFechaEmpleado());
-            completeDateInsert = "DATE(\""+ fechaNac +"\")";
+            completeDateInsert = fechaNac;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -242,9 +244,10 @@ public class EmpleadoMD {
         
         try{
             Statement stt = con.createStatement();
-            stt.execute("USE LABORATORIO");
+            
+            stt.execute("ALTER SESSION SET nls_date_format='yyyy-mm-dd'");
 
-            this.rs = stt.executeQuery("SELECT * FROM empleado WHERE CODIGO_EMPLEADO='"+empleado_dp.getCodigoEmpleado()+"' ");
+            this.rs = stt.executeQuery("SELECT * FROM empleado WHERE "+parametro+"='"+valor+"'");
 
             while (this.rs.next()){
                     empleadoAux.setCodigoEmpleado(this.rs.getString(1));

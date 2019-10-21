@@ -19,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaEmpleadoGUI extends javax.swing.JFrame {
 
     private EmpleadoDP empleado_dp;
+    private EmpleadoDP empleado2_dp = new EmpleadoDP();
     boolean isEdit = false;
+    
     public VentanaEmpleadoGUI() {
         initComponents();
     }
@@ -41,6 +43,7 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         tp_Adm_Emp = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -82,20 +85,32 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setText("CARGAR TABLA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout p_consultapEmpleadosLayout = new javax.swing.GroupLayout(p_consultapEmpleados);
         p_consultapEmpleados.setLayout(p_consultapEmpleadosLayout);
         p_consultapEmpleadosLayout.setHorizontalGroup(
             p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
-                .addGap(205, 205, 205)
                 .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(59, 59, 59)
-                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGap(59, 59, 59)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -110,6 +125,8 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
                 .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
+                .addGap(109, 109, 109)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_consultapEmpleadosLayout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
@@ -334,6 +351,10 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
     private void tf_ingCodEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ingCodEmpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_ingCodEmpActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cargarTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
      private void limpiar(){
         this.tf_ingCedEmp.setText("");
         this.tf_ingDirEmp.setText("");
@@ -357,8 +378,13 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         
         
        Vector v1 = new Vector();
-       //v1 = empleado_dp.listarEmpleados();
+       v1 = empleado2_dp.listarEmpleados();
+       System.out.println(v1.toString());
+       System.out.println("intancia de el vector");
+       
+       
         for (int i = 0; i < v1.size(); i++) {
+            
             Object arr[] = null;
             EmpleadoDP edp_aux = (EmpleadoDP) v1.get(i);
             modelo1.addRow(arr);
@@ -371,12 +397,15 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
             modelo1.setValueAt(edp_aux.getCargoEmpleado(), i, 6);
         }
         
-        
     }
+    
+     
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -404,13 +433,16 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VentanaEmpleadoGUI().setVisible(true);
+                
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_EmpBorrar;
     private javax.swing.JButton bt_guardarEmp;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
