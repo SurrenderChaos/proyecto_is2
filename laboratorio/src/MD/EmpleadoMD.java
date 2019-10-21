@@ -28,42 +28,24 @@ public class EmpleadoMD {
         this.empleado_dp = empleado_dp;
     }
     
-     public static void conectarDB(){
+     public Connection conectarDB(){
         InputStream input;
-        
-        try {
-            input = new FileInputStream("D:/Documentos/sexto/is_2/proyecto/codigo_fuente/laboratorio/src/MD/configuracion.properties");
+        try{
+            input = new FileInputStream("src/MD/configuracion.properties");
             Properties prop = new Properties();
             prop.load(input);
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
-            String password = prop.getProperty("password");
-            Class.forName("oracle.jdbc.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SYSTEM", "lab");             
-            System.out.println("Conexion exitosa!"); 
-        }catch (Exception e){
+            String pass = prop.getProperty("pass");
+            String driver = prop.getProperty("driver");
+            Class.forName(driver);
+            this.con = DriverManager.getConnection(url,user,pass);
+        }catch(Exception e){
             e.printStackTrace();
         }
-    }
-     
-    public static void conexion2(){
-        try{  
-        //step1 load the driver class  
-        Class.forName("oracle.jdbc.driver.OracleDriver");  
-
-        //step2 create  the connection object  
-        Connection con=DriverManager.getConnection(  
-        "jdbc:oracle:thin:@localhost:1521:xe","system","lab");  
-
-         System.out.println("Conexion exitosa!"); 
-
-        }catch(Exception e){ System.out.println(e);}  
-
+        return con;
     }  
-      
      
-    
-	
     public  void desconectarDB(){
         try
         {
@@ -144,23 +126,25 @@ public class EmpleadoMD {
  
     }
     
-    @SuppressWarnings("ConvertToTryWithResources")
+    
     public boolean verificarCodigo(){
         try{
             conectarDB();
-            //conexion2();
+          
             System.out.println("conectado");
             Statement stt = con.createStatement();
             System.out.println("creado statement");
-            //stt.execute("USE SYSTEM");
-            ResultSet res = stt.executeQuery("SELECT * FROM EMPLEADO");
+            ResultSet res = stt.executeQuery("select * from empleado");
+            
             while (res.next()){
                 System.out.println(empleado_dp.toString());
-                System.out.println("res = "+res.getString(1));
-                if(this.empleado_dp.getCodigoEmpleado().equals(res.getString(1)))
+                System.out.println("res = "+res.getString(1).trim());
+                if(this.empleado_dp.getCodigoEmpleado().equals(res.getString(1).trim()))
                     return true;
 	        	 
 	        }
+            
+            System.out.println("hecho el query");
 	        res.close();
 	        stt.close();
             
@@ -210,7 +194,7 @@ public class EmpleadoMD {
         
         try{
             Statement stt = con.createStatement();
-            stt.execute("USE LABORATORIO");
+            
 
             this.rs = stt.executeQuery("SELECT * FROM empleado WHERE CODIGO_EMPLEADO='"+empleado_dp.getCodigoEmpleado()+"' ");
 
