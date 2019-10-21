@@ -229,7 +229,7 @@ public class EmpleadoMD {
         return empleadoAux;
     }
     
-    public EmpleadoDP buscarParametro(String parametro, String valor){
+    /*public EmpleadoDP buscarParametro(int pos, String valor){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String completeDateInsert = "";
         try {
@@ -241,13 +241,38 @@ public class EmpleadoMD {
         
         conectarDB();
         EmpleadoDP empleadoAux = new EmpleadoDP();
+        String parametro = "";
+        
+
+
+        
+        switch(pos) {
+            
+        case 0:
+            parametro = "EMPLEADO_CEDULA";
+          
+          break;
+        case 1:
+          parametro = "EMPLEADO_NOMBRE";
+          break;
+        case 2:
+          parametro = "EMPLEADO_DIRECCION";
+          break;
+        case 3:
+          parametro = "EMPLEADO_CARGO";
+          break;
+        case 4:
+          parametro = "EMPLEADO_FECHA";
+          break;
+       
+      }
         
         try{
             Statement stt = con.createStatement();
             
             stt.execute("ALTER SESSION SET nls_date_format='yyyy-mm-dd'");
 
-            this.rs = stt.executeQuery("SELECT * FROM empleado WHERE "+parametro+"='"+valor+"'");
+            this.rs = stt.executeQuery("SELECT * FROM empleado WHERE '"+parametro+"'='"+valor+"'");
 
             while (this.rs.next()){
                     empleadoAux.setCodigoEmpleado(this.rs.getString(1));
@@ -266,6 +291,63 @@ public class EmpleadoMD {
         }
         
         return empleadoAux;
+    }*/
+    
+    
+    public Vector  buscarParametro(int pos, String valor){
+        
+	Vector listaEmpleadosParametro = new Vector();
+        String parametro = "";
+        switch(pos) {
+            
+        case 0:
+            parametro = "CEDULA_EMPLEADO";
+          
+          break;
+        case 1:
+          parametro = "NOMBRE_EMPLEADO";
+          break;
+        case 2:
+          parametro = "DIRECCION_EMPLEADO";
+          break;
+        case 3:
+          parametro = "CARGO_EMPLEADO";
+          break;
+        case 4:
+          parametro = "FECHA_EMPLEADO";
+          break;
+       
+      }
+        
+		
+	try{
+                conectarDB();
+		Statement stt = con.createStatement();
+                
+	        
+	         
+	        this.rs = stt.executeQuery("SELECT * FROM empleado WHERE "+parametro+" = '"+valor+"'");
+	        while (this.rs.next()){
+                    EmpleadoDP empleadoAInsertar = new EmpleadoDP();
+                    empleadoAInsertar.setCodigoEmpleado(rs.getString(1));
+                    empleadoAInsertar.setCedulaEmpleado(rs.getString(2));
+                    empleadoAInsertar.setNombreEmpleado(rs.getString(3));
+                    empleadoAInsertar.setTelefonoEmpleado(rs.getString(4));
+                    empleadoAInsertar.setFechaEmpleado(rs.getDate(5));
+                    empleadoAInsertar.setDireccionEmpleado(rs.getString(6));
+                    empleadoAInsertar.setCargoEmpleado(rs.getString(7));
+                    listaEmpleadosParametro.add(empleadoAInsertar); 
+	        }
+	        this.rs.close();
+	        stt.close();
+		}
+	    catch (Exception e){
+                System.out.println(e.toString());
+            }
+	
+        
+	return listaEmpleadosParametro;
+        
     }
      
     

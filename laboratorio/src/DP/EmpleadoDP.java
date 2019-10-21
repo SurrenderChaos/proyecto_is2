@@ -103,8 +103,8 @@ public class EmpleadoDP {
         return empleado_md.buscar();
     }
     
-    public void buscarParametroEmpleado(String parametro, String valor){
-        empleado_md.buscarParametro(parametro, valor);
+    public Vector buscarParametroEmpleado(int pos, String valor){
+        return empleado_md.buscarParametro(pos, valor);
     }
     
     public boolean  verificarCodigoEmpleado(){

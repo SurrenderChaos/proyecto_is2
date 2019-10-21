@@ -38,12 +38,13 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         tp_empleados = new javax.swing.JTabbedPane();
         p_consultapEmpleados = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        tf_valorParametro = new javax.swing.JTextField();
+        cb_parametro = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        bt_busquedaGeneral = new javax.swing.JButton();
+        bt_buscarParametro = new javax.swing.JButton();
         tp_Adm_Emp = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -68,7 +69,7 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
 
         jLabel9.setText("PARÁMETRO");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CÉDULA", "NOMBRE", "DIRECCION", "CARGO", "FECHA" }));
+        cb_parametro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CÉDULA", "NOMBRE", "DIRECCION", "CARGO", "FECHA" }));
 
         jLabel10.setText("VALOR DEL PARÁMETRO");
 
@@ -85,10 +86,17 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("CARGAR TABLA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_busquedaGeneral.setText("CARGAR TABLA");
+        bt_busquedaGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_busquedaGeneralActionPerformed(evt);
+            }
+        });
+
+        bt_buscarParametro.setText("BUSCAR POR PARAMETRO");
+        bt_buscarParametro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_buscarParametroActionPerformed(evt);
             }
         });
 
@@ -102,14 +110,15 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
                         .addGap(205, 205, 205)
                         .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(59, 59, 59)
-                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel10)))
                     .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
                         .addGap(172, 172, 172)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59)
+                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -120,13 +129,15 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
                 .addGap(120, 120, 120)
                 .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(109, 109, 109)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_consultapEmpleadosLayout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
@@ -352,9 +363,56 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_ingCodEmpActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_busquedaGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_busquedaGeneralActionPerformed
         cargarTabla();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bt_busquedaGeneralActionPerformed
+
+    private void bt_buscarParametroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarParametroActionPerformed
+        int pos = cb_parametro.getSelectedIndex();
+        System.out.println("el valor del combo es: "+cb_parametro.getSelectedIndex());
+        
+        String valor = tf_valorParametro.getText();
+        
+       System.out.println("el valor del combo es: "+tf_valorParametro.getText());
+        
+        
+        DefaultTableModel modelo1 = new DefaultTableModel();
+        jTable1.setModel(modelo1);
+        
+        modelo1.addColumn("Codigo");
+        modelo1.addColumn("Cedula");
+        modelo1.addColumn("Nombre");
+        modelo1.addColumn("Telefono");
+        modelo1.addColumn("Fecha");
+        modelo1.addColumn("Direccion");
+        modelo1.addColumn("Cargo");
+        
+        
+       Vector v1 = new Vector();
+       v1 = empleado2_dp.buscarParametroEmpleado(pos, valor);
+       System.out.println(v1.toString());
+      
+       
+       
+        for (int i = 0; i < v1.size(); i++) {
+            
+            Object arr[] = null;
+            EmpleadoDP edp_aux = (EmpleadoDP) v1.get(i);
+            modelo1.addRow(arr);
+            modelo1.setValueAt(edp_aux.getCodigoEmpleado(), i, 0);
+            modelo1.setValueAt(edp_aux.getCedulaEmpleado(), i, 1);
+            modelo1.setValueAt(edp_aux.getNombreEmpleado(), i, 2);
+            modelo1.setValueAt(edp_aux.getTelefonoEmpleado(), i, 3);
+            modelo1.setValueAt(edp_aux.getFechaEmpleado(), i, 4);
+            modelo1.setValueAt(edp_aux.getDireccionEmpleado(), i, 5);
+            modelo1.setValueAt(edp_aux.getCargoEmpleado(), i, 6);
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_bt_buscarParametroActionPerformed
      private void limpiar(){
         this.tf_ingCedEmp.setText("");
         this.tf_ingDirEmp.setText("");
@@ -441,9 +499,10 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_EmpBorrar;
+    private javax.swing.JButton bt_buscarParametro;
+    private javax.swing.JButton bt_busquedaGeneral;
     private javax.swing.JButton bt_guardarEmp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox cb_parametro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -456,7 +515,6 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lb_ingMensajeEmp;
     private javax.swing.JPanel p_consultapEmpleados;
     private javax.swing.JTextField tf_ingCargoEmp;
@@ -466,6 +524,7 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
     private javax.swing.JTextField tf_ingFechaEmp;
     private javax.swing.JTextField tf_ingNomEmp;
     private javax.swing.JTextField tf_ingTelefEmp;
+    private javax.swing.JTextField tf_valorParametro;
     private javax.swing.JPanel tp_Adm_Emp;
     private javax.swing.JTabbedPane tp_empleados;
     // End of variables declaration//GEN-END:variables
