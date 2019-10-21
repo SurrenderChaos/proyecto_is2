@@ -59,20 +59,23 @@ public class EmpleadoMD {
         String completeDateInsert = "";
         try {
             String fechaNac = formatter.format(empleado_dp.getFechaEmpleado());
-            completeDateInsert = "DATE(\""+ fechaNac +"\")";
+            completeDateInsert = fechaNac;
+            //completeDateInsert = "DATE(\""+ fechaNac +"\")";
         } catch (Exception e) {
             e.printStackTrace();
         }
         try{
             conectarDB();
             Statement stt = con.createStatement();
-            stt.execute("USE LABORATORIO");
+            
+             stt.execute("ALTER SESSION SET nls_date_format='yyyy-mm-dd'");
+            
             String query = "INSERT INTO empleado (CODIGO_EMPLEADO,CEDULA_EMPLEADO,NOMBRE_EMPLEADO,TELEFONO_EMPLEADO,NACIMIENTO_EMPLEADO,DIRECCION_EMPLEADO,CARGO_EMPLEADO)" + 
 	        	    "VALUES('"+empleado_dp.getCodigoEmpleado()+"','"
                     +empleado_dp.getCedulaEmpleado()+"','"
-                    +empleado_dp.getNombreEmpleado()+"',"
-                    +empleado_dp.getTelefonoEmpleado()+","
-                    + completeDateInsert + ",'"
+                    +empleado_dp.getNombreEmpleado()+"','"
+                    +empleado_dp.getTelefonoEmpleado()+"','"
+                    + completeDateInsert + "','"
                     +empleado_dp.getDireccionEmpleado()+"','"
                     +empleado_dp.getCargoEmpleado()+"')";
             System.out.println(query);
@@ -88,9 +91,14 @@ public class EmpleadoMD {
     public void actualizar(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String completeDateInsert = "";
+        
         try {
             String fechaNac = formatter.format(empleado_dp.getFechaEmpleado());
-            completeDateInsert = "DATE(\""+ fechaNac +"\")";
+            completeDateInsert = fechaNac;
+            System.out.println(completeDateInsert);
+            
+            //completeDateInsert = "DATE(\""+ fechaNac +"\")";
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,9 +106,11 @@ public class EmpleadoMD {
         try{
             conectarDB();
             Statement stt = con.createStatement();
-            stt.execute("USE LABORATORIO");
+            
+            stt.execute("ALTER SESSION SET nls_date_format='yyyy-mm-dd'");//primero se debe setear la consola de oracle para que acepte el formato que vamos a poner
+           
 
-            stt.execute("UPDATE empleado SET CEDULA_EMPLEADO = '"+empleado_dp.getCedulaEmpleado()+"', NOMBRE_EMPLEADO = '"+empleado_dp.getNombreEmpleado()+"', TELEFONO_EMPLEADO = '"+empleado_dp.getTelefonoEmpleado()+"', NACIMIENTO_EMPLEADO = "+completeDateInsert+",DIRECCION_EMPLEADO = '"+empleado_dp.getDireccionEmpleado()+"',CARGO_EMPLEADO = '"+empleado_dp.getCargoEmpleado()+"'   "+
+            stt.execute("UPDATE empleado SET CEDULA_EMPLEADO = '"+empleado_dp.getCedulaEmpleado()+"', NOMBRE_EMPLEADO = '"+empleado_dp.getNombreEmpleado()+"', TELEFONO_EMPLEADO = '"+empleado_dp.getTelefonoEmpleado()+"', NACIMIENTO_EMPLEADO = '"+completeDateInsert+"',DIRECCION_EMPLEADO = '"+empleado_dp.getDireccionEmpleado()+"',CARGO_EMPLEADO = '"+empleado_dp.getCargoEmpleado()+"'   "+
                                     "WHERE CODIGO_EMPLEADO='"+empleado_dp.getCodigoEmpleado()+"'");
 
             stt.close();
@@ -115,7 +125,7 @@ public class EmpleadoMD {
         try{
             conectarDB();
             Statement stt = con.createStatement();
-            stt.execute("USE LABORATORIO");
+            
 
             stt.execute("DELETE FROM empleado " + 
                         "WHERE CODIGO_EMPLEADO='"+empleado_dp.getCodigoEmpleado()+"'");

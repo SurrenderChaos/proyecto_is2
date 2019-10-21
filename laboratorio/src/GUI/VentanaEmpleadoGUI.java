@@ -272,22 +272,25 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         empleado_dp.setDireccionEmpleado(tf_ingDirEmp.getText());
         String fechaNacimiento = this.tf_ingFechaEmp.getText();
         try {
-            empleado_dp.setFechaEmpleado(new SimpleDateFormat("dd-MM-yyyy").parse(fechaNacimiento));
+            empleado_dp.setFechaEmpleado(new SimpleDateFormat("yyyy-MM-dd").parse(fechaNacimiento));
         } catch (ParseException ex) {
             System.out.println("Fecha mal ingresada: "+ex.toString());
         }
         empleado_dp.setCargoEmpleado(this.tf_ingCargoEmp.getText());
         empleado_dp.setTelefonoEmpleado(tf_ingTelefEmp.getText());
         empleado_dp.setNombreEmpleado(this.tf_ingNomEmp.getText());
+        System.out.println("objeto dp de GUI "+empleado_dp.toString());
 
         if (this.isEdit==false){
             empleado_dp.insertarEmpleado();
+            System.out.println("objeto dp false de GUI "+empleado_dp.toString());
             lb_ingMensajeEmp.setText("EMPLEADO INGRESADO");
             this.limpiar();
         }
         else
         {
             empleado_dp.actualizarEmpleado();
+            System.out.println("objeto dp true de GUI "+empleado_dp.toString());
             lb_ingMensajeEmp.setText("EMPLEADO MODIFICADO");
             this.limpiar();
         }
