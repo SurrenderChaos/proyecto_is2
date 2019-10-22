@@ -24,11 +24,14 @@
                 <Property name="text" type="java.lang.String" value="Administraci&#xf3;n de Investigadores"/>
               </Properties>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu7">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Adminstraci&#xf3;n de Lugares"/>
+                <Property name="text" type="java.lang.String" value="Administraci&#xf3;n de Lugares"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMenu8">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Adminstraci&#xf3;n de Animales"/>
@@ -45,6 +48,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Investigaci&#xf3;n de Lugares"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
