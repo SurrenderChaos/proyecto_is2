@@ -296,6 +296,7 @@ public class EmpleadoMD {
     
     public Vector  buscarParametro(int pos, String valor){
         
+        
 	Vector listaEmpleadosParametro = new Vector();
         String parametro = "";
         switch(pos) {
@@ -314,7 +315,11 @@ public class EmpleadoMD {
           parametro = "CARGO_EMPLEADO";
           break;
         case 4:
-          parametro = "FECHA_EMPLEADO";
+          parametro = "NACIMIENTO_EMPLEADO";
+          
+          break;
+        case 5:
+          parametro = "TELEFONO_EMPLEADO";
           break;
        
       }
@@ -325,8 +330,17 @@ public class EmpleadoMD {
 		Statement stt = con.createStatement();
                 
 	        
-	         
-	        this.rs = stt.executeQuery("SELECT * FROM empleado WHERE "+parametro+" = '"+valor+"'");
+	        if(parametro=="NACIMIENTO_EMPLEADO"){
+                    this.rs = stt.executeQuery("select * from empleado where NACIMIENTO_EMPLEADO "+"="+"TO_DATE('"+valor+"','yyyy-mm-dd')");
+                    
+                    
+                    
+                }else{
+                    this.rs = stt.executeQuery("SELECT * FROM empleado WHERE "+parametro+" = '"+valor+"'");
+                    
+                }
+                System.out.println(rs);
+	        
 	        while (this.rs.next()){
                     EmpleadoDP empleadoAInsertar = new EmpleadoDP();
                     empleadoAInsertar.setCodigoEmpleado(rs.getString(1));

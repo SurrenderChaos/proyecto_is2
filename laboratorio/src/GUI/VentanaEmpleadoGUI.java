@@ -36,15 +36,6 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         tp_empleados = new javax.swing.JTabbedPane();
-        p_consultapEmpleados = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        tf_valorParametro = new javax.swing.JTextField();
-        cb_parametro = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        bt_busquedaGeneral = new javax.swing.JButton();
-        bt_buscarParametro = new javax.swing.JButton();
         tp_Adm_Emp = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -64,88 +55,18 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         bt_guardarEmp = new javax.swing.JButton();
         bt_EmpBorrar = new javax.swing.JButton();
         lb_ingMensajeEmp = new javax.swing.JLabel();
+        p_consultapEmpleados = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        tf_valorParametro = new javax.swing.JTextField();
+        cb_parametro = new javax.swing.JComboBox();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        bt_busquedaGeneral = new javax.swing.JButton();
+        bt_buscarParametro = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel9.setText("PARÁMETRO");
-
-        cb_parametro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CÉDULA", "NOMBRE", "DIRECCION", "CARGO", "FECHA" }));
-
-        jLabel10.setText("VALOR DEL PARÁMETRO");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "CÓDIGO", "CÉDULA", "NOMBRE", "FECHA", "CARGO"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        bt_busquedaGeneral.setText("CARGAR TABLA");
-        bt_busquedaGeneral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_busquedaGeneralActionPerformed(evt);
-            }
-        });
-
-        bt_buscarParametro.setText("BUSCAR POR PARAMETRO");
-        bt_buscarParametro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_buscarParametroActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout p_consultapEmpleadosLayout = new javax.swing.GroupLayout(p_consultapEmpleados);
-        p_consultapEmpleados.setLayout(p_consultapEmpleadosLayout);
-        p_consultapEmpleadosLayout.setHorizontalGroup(
-            p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
-                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)))
-                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59)
-                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        p_consultapEmpleadosLayout.setVerticalGroup(
-            p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(109, 109, 109)
-                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_consultapEmpleadosLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
-        );
-
-        tp_empleados.addTab("Consulta por Parámetros de Empleados", p_consultapEmpleados);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("ADMINISTRACIÓN DE EMPLEADOS");
@@ -265,6 +186,93 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         );
 
         tp_empleados.addTab("Administración de Empleados", tp_Adm_Emp);
+
+        jLabel9.setText("PARÁMETRO");
+
+        cb_parametro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CÉDULA", "NOMBRE", "DIRECCION", "CARGO", "FECHA", "TELEFONO" }));
+
+        jLabel10.setText("VALOR DEL PARÁMETRO");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "CÓDIGO", "CÉDULA", "NOMBRE", "FECHA", "CARGO"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        bt_busquedaGeneral.setText("CARGAR TABLA");
+        bt_busquedaGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_busquedaGeneralActionPerformed(evt);
+            }
+        });
+
+        bt_buscarParametro.setText("BUSCAR POR PARAMETRO");
+        bt_buscarParametro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_buscarParametroActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel11.setText("CONSULTA DE EMPLEADOS");
+
+        javax.swing.GroupLayout p_consultapEmpleadosLayout = new javax.swing.GroupLayout(p_consultapEmpleados);
+        p_consultapEmpleados.setLayout(p_consultapEmpleadosLayout);
+        p_consultapEmpleadosLayout.setHorizontalGroup(
+            p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
+                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jLabel11)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        p_consultapEmpleadosLayout.setVerticalGroup(
+            p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_consultapEmpleadosLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(80, 80, 80)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(109, 109, 109)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_consultapEmpleadosLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
+        );
+
+        tp_empleados.addTab("Consulta de Empleados", p_consultapEmpleados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -505,6 +513,7 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_parametro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
