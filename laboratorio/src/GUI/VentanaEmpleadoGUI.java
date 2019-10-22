@@ -6,8 +6,11 @@
 package GUI;
 
 import DP.EmpleadoDP;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Properties;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,10 +23,21 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
 
     private EmpleadoDP empleado_dp;
     private EmpleadoDP empleado2_dp = new EmpleadoDP();
+    Vector p2 = empleado2_dp.llenarParametroEmpleado();
+        
+        
+        
     boolean isEdit = false;
     
     public VentanaEmpleadoGUI() {
         initComponents();
+        for (int i = 0; i < p2.size(); i++) {
+            String nombreColumna = p2.get(i).toString();
+            String nombreFormateado = nombreColumna.substring(0, nombreColumna.indexOf("_"));
+            cb_parametro.addItem(nombreFormateado);
+            
+             
+        }
     }
 
     /**
@@ -189,19 +203,17 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
 
         jLabel9.setText("PARÁMETRO");
 
-        cb_parametro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CÉDULA", "NOMBRE", "DIRECCION", "CARGO", "FECHA", "TELEFONO" }));
-
         jLabel10.setText("VALOR DEL PARÁMETRO");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "CÓDIGO", "CÉDULA", "NOMBRE", "FECHA", "CARGO"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -228,41 +240,39 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         p_consultapEmpleadosLayout.setHorizontalGroup(
             p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
                         .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel9)
-                            .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(79, 79, 79)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
                         .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jLabel11)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
                 .addContainerGap())
         );
         p_consultapEmpleadosLayout.setVerticalGroup(
             p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_consultapEmpleadosLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(p_consultapEmpleadosLayout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addGap(80, 80, 80)
-                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(48, 48, 48)
+                        .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(cb_parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)
+                        .addGap(145, 145, 145)
                         .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(109, 109, 109)
+                            .addComponent(jLabel10)
+                            .addComponent(tf_valorParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
                         .addGroup(p_consultapEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bt_busquedaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bt_buscarParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -386,15 +396,18 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
         
         DefaultTableModel modelo1 = new DefaultTableModel();
         jTable1.setModel(modelo1);
+        Vector p1 = empleado2_dp.llenarParametroEmpleado();
         
-        modelo1.addColumn("Codigo");
-        modelo1.addColumn("Cedula");
-        modelo1.addColumn("Nombre");
-        modelo1.addColumn("Telefono");
-        modelo1.addColumn("Fecha");
-        modelo1.addColumn("Direccion");
-        modelo1.addColumn("Cargo");
         
+        for (int i = 0; i < p1.size(); i++) {
+            String nombreColumna = p1.get(i).toString();
+            String nombreFormateado = nombreColumna.substring(0, nombreColumna.indexOf("_"));
+            modelo1.addColumn(nombreFormateado.trim());
+            
+             
+        }
+        
+       
         
        Vector v1 = new Vector();
        v1 = empleado2_dp.buscarParametroEmpleado(pos, valor);
@@ -433,14 +446,18 @@ public class VentanaEmpleadoGUI extends javax.swing.JFrame {
      public void cargarTabla(){
         DefaultTableModel modelo1 = new DefaultTableModel();
         jTable1.setModel(modelo1);
+        Vector p1 = empleado2_dp.llenarParametroEmpleado();
         
-        modelo1.addColumn("Codigo");
-        modelo1.addColumn("Cedula");
-        modelo1.addColumn("Nombre");
-        modelo1.addColumn("Telefono");
-        modelo1.addColumn("Fecha");
-        modelo1.addColumn("Direccion");
-        modelo1.addColumn("Cargo");
+        
+        for (int i = 0; i < p1.size(); i++) {
+            String nombreColumna = p1.get(i).toString();
+            String nombreFormateado = nombreColumna.substring(0, nombreColumna.indexOf("_"));
+            modelo1.addColumn(nombreFormateado.trim());
+            
+             
+        }
+        
+        
         
         
        Vector v1 = new Vector();

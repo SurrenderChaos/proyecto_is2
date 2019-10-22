@@ -54,6 +54,37 @@ public class EmpleadoMD {
         catch (Exception e){}
     }
     
+    
+    public Vector llenarParametro(){
+        
+	Vector listaColumnas = new Vector();
+        
+		
+	try{
+                conectarDB();
+		Statement stt = con.createStatement();
+	        
+	         
+	        this.rs = stt.executeQuery("SELECT column_name FROM USER_TAB_COLUMNS WHERE table_name "+"= 'EMPLEADO'");
+	        while (this.rs.next()){
+                    
+                    listaColumnas.add(rs.getString(1));
+                   
+                    
+	        }
+	        this.rs.close();
+	        stt.close();
+		}
+	    catch (Exception e){
+                System.out.println(e.toString());
+            }
+	
+        
+	return listaColumnas;
+        
+        
+    }
+    
     public void insertar(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String completeDateInsert = "";
@@ -229,69 +260,7 @@ public class EmpleadoMD {
         return empleadoAux;
     }
     
-    /*public EmpleadoDP buscarParametro(int pos, String valor){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String completeDateInsert = "";
-        try {
-            String fechaNac = formatter.format(empleado_dp.getFechaEmpleado());
-            completeDateInsert = fechaNac;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        conectarDB();
-        EmpleadoDP empleadoAux = new EmpleadoDP();
-        String parametro = "";
-        
-
-
-        
-        switch(pos) {
-            
-        case 0:
-            parametro = "EMPLEADO_CEDULA";
-          
-          break;
-        case 1:
-          parametro = "EMPLEADO_NOMBRE";
-          break;
-        case 2:
-          parametro = "EMPLEADO_DIRECCION";
-          break;
-        case 3:
-          parametro = "EMPLEADO_CARGO";
-          break;
-        case 4:
-          parametro = "EMPLEADO_FECHA";
-          break;
-       
-      }
-        
-        try{
-            Statement stt = con.createStatement();
-            
-            stt.execute("ALTER SESSION SET nls_date_format='yyyy-mm-dd'");
-
-            this.rs = stt.executeQuery("SELECT * FROM empleado WHERE '"+parametro+"'='"+valor+"'");
-
-            while (this.rs.next()){
-                    empleadoAux.setCodigoEmpleado(this.rs.getString(1));
-                    empleadoAux.setCedulaEmpleado(this.rs.getString(2));
-                    empleadoAux.setNombreEmpleado(this.rs.getString(3));
-                    empleadoAux.setTelefonoEmpleado(this.rs.getString(4));
-                    empleadoAux.setFechaEmpleado(this.rs.getDate(5));
-                    empleadoAux.setDireccionEmpleado(this.rs.getString(6));
-                    empleadoAux.setCargoEmpleado(this.rs.getString(7));
-            }
-            this.rs.close();
-            stt.close();
-            }
-        catch (Exception exc){
-            System.out.println(exc.toString());
-        }
-        
-        return empleadoAux;
-    }*/
+    
     
     
     public Vector  buscarParametro(int pos, String valor){
@@ -300,27 +269,34 @@ public class EmpleadoMD {
 	Vector listaEmpleadosParametro = new Vector();
         String parametro = "";
         switch(pos) {
-            
+        
         case 0:
+            parametro = "CODIGO_EMPLEADO";
+          
+          break;
+            
+        case 1:
             parametro = "CEDULA_EMPLEADO";
           
           break;
-        case 1:
+        case 2:
           parametro = "NOMBRE_EMPLEADO";
           break;
-        case 2:
-          parametro = "DIRECCION_EMPLEADO";
-          break;
         case 3:
-          parametro = "CARGO_EMPLEADO";
+          parametro = "TELEFONO_EMPLEADO";
           break;
         case 4:
           parametro = "NACIMIENTO_EMPLEADO";
-          
           break;
         case 5:
-          parametro = "TELEFONO_EMPLEADO";
+          parametro = "DIRECCION_EMPLEADO";
+          
           break;
+        case 6:
+          parametro = "CARGO_EMPLEADO";
+          break;
+          
+        
        
       }
         

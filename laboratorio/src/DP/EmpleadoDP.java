@@ -110,6 +110,10 @@ public class EmpleadoDP {
     public boolean  verificarCodigoEmpleado(){
         return empleado_md.verificarCodigo();
     }
+    
+    public Vector llenarParametroEmpleado(){
+        return empleado_md.llenarParametro();
+    }
 
     @Override
     public String toString() {
